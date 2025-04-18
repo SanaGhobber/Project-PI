@@ -5,13 +5,18 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.controllers.AjoutPersonne">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="134.0" layoutY="111.0" text="Nom :" />
-      <Label layoutX="134.0" layoutY="192.0" text="Prénom :" />
-      <TextField fx:id="tfNom" layoutX="300.0" layoutY="107.0" />
-      <TextField fx:id="tfPrenom" layoutX="300.0" layoutY="188.0" />
-      <Button layoutX="274.0" layoutY="281.0" mnemonicParsing="false" onAction="#addPerson" text="Enregistrer" />
+      <TextField fx:id="password" layoutX="247.0" layoutY="175.0" />
+      <TextField fx:id="nom" layoutX="247.0" layoutY="55.0" />
+      <Label layoutX="154.0" layoutY="59.0" text="Nom" />
+      <Label layoutX="147.0" layoutY="116.0" text="Prénom" />
+      <Button layoutX="457.0" layoutY="321.0" mnemonicParsing="false" text="Add" />
+      <TextField fx:id="email" layoutX="247.0" layoutY="228.0" />
+      <TextField fx:id="prenom" layoutX="247.0" layoutY="112.0" />
+      <TextField fx:id="role" layoutX="247.0" layoutY="280.0" />
+      <Label layoutX="143.0" layoutY="175.0" text="password" />
+      <Label layoutX="154.0" layoutY="232.0" text="email" />
+      <Label layoutX="154.0" layoutY="297.0" text="role" />
    </children>
 </AnchorPane>

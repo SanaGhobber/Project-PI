@@ -5,16 +5,26 @@ public class Personne {
     private int id;
     private String nom;
     private String prenom;
+    private String email;
+    private String password;
+    private String role;
 
-    public Personne(String nom, String prenom) {
-        this.nom = nom;
-        this.prenom = prenom;
-    }
 
-    public Personne(int id, String nom, String prenom) {
+    public Personne(int id, String nom, String prenom, String email, String password, String role) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
+
+    public Personne(String nom, String prenom, String email, String password, String role) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.password = password;
+        this.role = role;
     }
 
     public int getId() {
@@ -41,12 +51,39 @@ public class Personne {
         this.prenom = prenom;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
         return "Personne{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
                 '}';
     }
 }
