@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.ProduitController"
+            prefWidth="800.0" prefHeight="500.0">
+   <!-- Formulaire de gestion des produits -->
+   <children>
+      <!-- Labels et TextFields -->
+      <Label layoutX="20.0" layoutY="20.0" text="ID :" />
+      <TextField fx:id="tfId" layoutX="120.0" layoutY="16.0" prefWidth="200.0" editable="false" />
+
+      <Label layoutX="20.0" layoutY="60.0" text="Nom :" />
+      <TextField fx:id="tfNom" layoutX="120.0" layoutY="56.0" prefWidth="200.0" />
+
+      <Label layoutX="20.0" layoutY="100.0" text="Description :" />
+      <TextField fx:id="tfDescription" layoutX="120.0" layoutY="96.0" prefWidth="200.0" />
+
+      <Label layoutX="20.0" layoutY="140.0" text="Prix :" />
+      <TextField fx:id="tfPrix" layoutX="120.0" layoutY="136.0" prefWidth="200.0" />
+
+      <Label layoutX="350.0" layoutY="20.0" text="Quantité en stock :" />
+      <TextField fx:id="tfQuantite" layoutX="500.0" layoutY="16.0" prefWidth="200.0" />
+
+      <Label layoutX="350.0" layoutY="60.0" text="Catégorie :" />
+      <TextField fx:id="tfCategorie" layoutX="500.0" layoutY="56.0" prefWidth="200.0" />
+
+      <Label layoutX="350.0" layoutY="100.0" text="Image Path :" />
+      <TextField fx:id="tfImagePath" layoutX="500.0" layoutY="96.0" prefWidth="200.0" />
+
+      <!-- Boutons CRUD -->
+      <Button fx:id="btnAjouter" layoutX="120.0" layoutY="180.0" text="Ajouter" prefWidth="100.0" />
+      <Button fx:id="btnModifier" layoutX="240.0" layoutY="180.0" text="Modifier" prefWidth="100.0" />
+      <Button fx:id="btnSupprimer" layoutX="360.0" layoutY="180.0" text="Supprimer" prefWidth="100.0" />
+      <Button fx:id="btnClear" layoutX="480.0" layoutY="180.0" text="Effacer" prefWidth="100.0" />
+
+      <!-- TableView des produits -->
+      <TableView fx:id="tableProduits" layoutX="20.0" layoutY="230.0" prefWidth="760.0" prefHeight="250.0">
+         <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="50.0" />
+            <TableColumn fx:id="colNom" text="Nom" prefWidth="150.0" />
+            <TableColumn fx:id="colDescription" text="Description" prefWidth="200.0" />
+            <TableColumn fx:id="colPrix" text="Prix" prefWidth="100.0" />
+            <TableColumn fx:id="colQuantite" text="Quantité" prefWidth="100.0" />
+            <TableColumn fx:id="colCategorie" text="Catégorie" prefWidth="100.0" />
+            <TableColumn fx:id="colImage" text="Image Path" prefWidth="150.0" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>
