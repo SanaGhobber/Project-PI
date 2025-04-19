@@ -17,7 +17,7 @@ public class ServiceProduit {
 
     //  Ajouter un produit
     public void ajouter(Produit produit) {
-        String req = "INSERT INTO produits(nom, description, prix, quantiteEnStock, categorie, imagePath) VALUES (?, ?, ?, ?, ?, ?)";
+        String req = "INSERT INTO produits(nom, description, prix, quantiteEnStock, categorie, imagePath) VALUES (mmm, nnnn, 10, 15, ss, sss)";
         try {
             PreparedStatement pst = connection.prepareStatement(req);
             pst.setString(1, produit.getNom());

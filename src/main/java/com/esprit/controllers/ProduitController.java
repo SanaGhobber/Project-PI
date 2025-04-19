@@ -9,8 +9,8 @@ import javafx.collections.FXCollections;
 import javafx.fxml.Initializable;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.ReadOnlyStringWrapper;
-import com.esprit.models.Produit;
-import com.esprit.services.ProduitService;
+import com.esprit.models.Gestion_des_produits.Produit;
+import com.esprit.services.ServiceProduit;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -39,7 +39,7 @@ public class ProduitController implements Initializable {
     @FXML private TableColumn<Produit, String> colCategorie;
     @FXML private TableColumn<Produit, String> colImagePath;
 
-    private ProduitService produitService = new ProduitService();
+    private ServiceProduit produitService = new ServiceProduit();
     private ObservableList<Produit> produitList = FXCollections.observableArrayList();
 
     @Override
@@ -63,7 +63,7 @@ public class ProduitController implements Initializable {
     }
 
     private void loadProducts() {
-        produitList.setAll(produitService.getTousLesProduits());
+        produitList.setAll(ServiceProduit.getTousLesProduits());
         tableProduits.setItems(produitList);
     }
 
@@ -88,7 +88,7 @@ public class ProduitController implements Initializable {
         p.setQuantiteEnStock(Integer.parseInt(tfQuantite.getText()));
         p.setCategorie(tfCategorie.getText());
         p.setImagePath(tfImagePath.getText());
-        produitService.ajouterProduit(p);
+        ServiceProduit.ajouterProduit(p);
         loadProducts();
         clearFields();
     }
@@ -103,7 +103,7 @@ public class ProduitController implements Initializable {
         p.setQuantiteEnStock(Integer.parseInt(tfQuantite.getText()));
         p.setCategorie(tfCategorie.getText());
         p.setImagePath(tfImagePath.getText());
-        produitService.modifierProduit(p);
+        ServiceProduit.modifierProduit(p);
         loadProducts();
         clearFields();
     }
@@ -111,7 +111,7 @@ public class ProduitController implements Initializable {
     @FXML
     private void handleSupprimer(ActionEvent event) {
         int id = Integer.parseInt(tfId.getText());
-        produitService.supprimerProduit(id);
+        ServiceProduit.supprimerProduit(id);
         loadProducts();
         clearFields();
     }
