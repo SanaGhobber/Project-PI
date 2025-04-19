@@ -16,11 +16,11 @@ public class MainProgGUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjoutPersonne.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjoutEvenement.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Workshop PIDEV");
+        primaryStage.setTitle("Workshop PIDEV - Add Event");
         primaryStage.show();
     }
 }

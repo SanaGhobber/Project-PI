@@ -116,4 +116,27 @@ public class ServicePersonne implements IService<Personne> {
         }
         return null;
     }
+
+    // New method to get Personne by ID
+    public Personne getById(int id) {
+        String req = "SELECT * FROM personne WHERE id = ?";
+        try {
+            PreparedStatement pst = connection.prepareStatement(req);
+            pst.setInt(1, id);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                return new Personne(
+                        rs.getInt("id"),
+                        rs.getString("nom"),
+                        rs.getString("prenom"),
+                        rs.getString("email"),
+                        rs.getString("password"),
+                        rs.getString("role")
+                );
+            }
+        } catch (SQLException e) {
+            System.err.println("Erreur lors de la recherche par ID: " + e.getMessage());
+        }
+        return null;
+    }
 }
