@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sportify.AdminParticiperController">
+   <children>
+      <StackPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="749.0" prefWidth="1205.0" stylesheets="@EventAdmin.css">
+         <children>
+            <AnchorPane prefHeight="766.0" prefWidth="1203.0">
+               <children>
+                  <AnchorPane prefHeight="750.0" prefWidth="1205.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-104.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane layoutY="1.0" prefHeight="749.0" prefWidth="260.0">
+                           <children>
+                              <AnchorPane layoutX="8.0" layoutY="45.0" prefHeight="246.0" prefWidth="244.0" stylesheets="@EventAdmin.css">
+                                 <children>
+                                    <Label layoutX="70.0" layoutY="162.0" prefHeight="45.0" prefWidth="115.0" text="Welcome" textFill="#fffdfd">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="164.0" fitWidth="187.0" layoutX="22.0" layoutY="8.0" />
+                                 </children>
+                                 <styleClass>
+                                    <String fx:value="nav1" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                              </AnchorPane>
+                              <AnchorPane layoutX="7.0" layoutY="291.0" prefHeight="443.0" prefWidth="244.0" stylesheets="@EventAdmin.css">
+                                 <styleClass>
+                                    <String fx:value="nav2" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <Button layoutX="21.0" layoutY="76.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="203.0" styleClass="nav-btn" stylesheets="@EventAdmin.css" text="Les Evenements" />
+                                    <Button layoutX="21.0" layoutY="168.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="203.0" styleClass="nav-btn" stylesheets="@EventAdmin.css" text="Les Participations" />
+                                    <Button layoutX="21.0" layoutY="252.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="203.0" styleClass="nav-btn" stylesheets="@EventAdmin.css" text="Produits" />
+                                    <Button layoutX="21.0" layoutY="337.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="203.0" styleClass="nav-btn" stylesheets="@EventAdmin.css" text="News" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="265.0" layoutY="21.0" prefHeight="722.0" prefWidth="930.0">
+                     <children>
+                        <AnchorPane prefHeight="722.0" prefWidth="932.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-102.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="78.0" layoutY="14.0" prefHeight="699.0" prefWidth="706.0" stylesheets="@EventAdmin.css">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <TableView fx:id="participerTable" layoutX="3.0" layoutY="59.0" prefHeight="635.0" prefWidth="700.0">
+                                       <columns>
+                                          <TableColumn fx:id="idColumn" prefWidth="100.0" text="ID" />
+                                          <TableColumn fx:id="eventColumn" prefWidth="200.0" text="ID Événement" />
+                                          <TableColumn fx:id="statusColumn" prefWidth="200.0" text="Statut" />
+                                          <TableColumn fx:id="roleColumn" prefWidth="200.0" text="Rôle" />
+                                       </columns>
+                                    </TableView>
+                                    <Label layoutX="281.0" layoutY="24.0" style="-fx-font-weight: bold; -fx-font-size: 16px;" text="Liste des Participations" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>
