@@ -1,18 +1,26 @@
 package com.esprit.services;
 
 import com.esprit.models.Client;
+import com.esprit.models.Gestion_des_produits.Produit;
 import com.esprit.utils.DataSource;
+import jakarta.persistence.EntityManager;
 
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServiceClient implements IService<Client> {
+public final class ServiceClient extends AbstractService<Client> {
 
-    private Connection connection;
+    public ServiceClient(EntityManager em) {
+        super(em);
+    }
+    @Override
+    protected Class<Client> getEntityClass() {
+        return Client.class;
+    }
 
-    public ServiceClient() {
+    /*public ServiceClient() {
         connection = DataSource.getInstance().getConnection();
     }
 
@@ -133,4 +141,4 @@ public class ServiceClient implements IService<Client> {
         }
         return null;
     }
-}
+*/}

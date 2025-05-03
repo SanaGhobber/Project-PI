@@ -1,6 +1,8 @@
 package com.esprit.controllers;
 
 
+import com.esprit.utils.JpaUtil;
+import jakarta.persistence.EntityManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
@@ -13,6 +15,7 @@ import com.esprit.models.Gestion_des_produits.Produit;
 import com.esprit.services.ServiceProduit;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ProduitController implements Initializable {
@@ -38,8 +41,9 @@ public class ProduitController implements Initializable {
     @FXML private TableColumn<Produit, Integer> colQuantite;
     @FXML private TableColumn<Produit, String> colCategorie;
     @FXML private TableColumn<Produit, String> colImagePath;
+    EntityManager em = JpaUtil.getEntityManager();
 
-    private ServiceProduit produitService = new ServiceProduit();
+    private final ServiceProduit produitService = new ServiceProduit(em);
     private ObservableList<Produit> produitList = FXCollections.observableArrayList();
 
     @Override
@@ -63,7 +67,8 @@ public class ProduitController implements Initializable {
     }
 
     private void loadProducts() {
-        produitList.setAll(ServiceProduit.getTousLesProduits());
+        List<Produit> produits=produitService.recuperer();
+        produitList.setAll(produits);
         tableProduits.setItems(produitList);
     }
 
@@ -88,7 +93,7 @@ public class ProduitController implements Initializable {
         p.setQuantiteEnStock(Integer.parseInt(tfQuantite.getText()));
         p.setCategorie(tfCategorie.getText());
         p.setImagePath(tfImagePath.getText());
-        ServiceProduit.ajouterProduit(p);
+        produitService.ajouter(p);
         loadProducts();
         clearFields();
     }
@@ -103,7 +108,7 @@ public class ProduitController implements Initializable {
         p.setQuantiteEnStock(Integer.parseInt(tfQuantite.getText()));
         p.setCategorie(tfCategorie.getText());
         p.setImagePath(tfImagePath.getText());
-        ServiceProduit.modifierProduit(p);
+        produitService.modifier(p);
         loadProducts();
         clearFields();
     }
@@ -111,7 +116,9 @@ public class ProduitController implements Initializable {
     @FXML
     private void handleSupprimer(ActionEvent event) {
         int id = Integer.parseInt(tfId.getText());
-        ServiceProduit.supprimerProduit(id);
+        Produit produit = produitService.findById(id);
+
+        produitService.supprimer(produit);
         loadProducts();
         clearFields();
     }

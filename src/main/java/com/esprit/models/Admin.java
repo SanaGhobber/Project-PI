@@ -1,5 +1,6 @@
 package com.esprit.models;
 
+
 public class Admin extends Personne {
     private String matriculeAdmin;
     private String departement;

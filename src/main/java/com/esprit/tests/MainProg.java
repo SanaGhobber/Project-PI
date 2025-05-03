@@ -1,14 +1,12 @@
 package com.esprit.tests;
+import jakarta.persistence.EntityManager;
+import com.esprit.utils.JpaUtil;
 
-import com.esprit.models.Admin;
-import com.esprit.models.Client;
-import com.esprit.models.Personne;
 import com.esprit.services.ServiceAdmin;
-import com.esprit.services.ServiceClient;
-import com.esprit.services.ServicePersonne;
 
 public class MainProg {
     public static void main(String[] args) {
+        EntityManager em = JpaUtil.getEntityManager();
        // ServicePersonne sp = new ServicePersonne();
       //  sp.ajouter(new Personne("Ahmed", "Ghassen","ghassen@gmail.com", "ghassen00", "admin"));
        // sp.modifier(new Personne(2, "Hamza", "Hosni", "ghassen@gmail.com", "ghassen00", "admin"));
@@ -21,7 +19,7 @@ public class MainProg {
        // c1.modifier(new Client(2,"malk","hamdi","",""));
         //System.out.println(c1.recuperer());
 
-        ServiceAdmin a = new ServiceAdmin();
+        ServiceAdmin a = new ServiceAdmin(em);
        // a.ajouter(new Admin("sana","ghober","sana@gmail.com","sana123","matricule" ,"hguef"));
         //a.supprimer(new Admin(1 ,"sana","ghober","sana@gmail.com","sana123","matricule" ,"hguef"));
         //a.modifier(new Admin(2,"malek","wael","sana@gmail.com","sana123","matriculee" ,"hgeeuef"));

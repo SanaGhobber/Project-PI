@@ -2,14 +2,23 @@ package com.esprit.services;
 
 import com.esprit.models.Admin;
 import com.esprit.utils.DataSource;
+import com.esprit.services.AbstractService;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.EntityManager;
 
-public class ServiceAdmin implements IService<Admin> {
+public class ServiceAdmin extends AbstractService<Admin> {
+    public ServiceAdmin(EntityManager em) {
+        super(em);
+    }
+    @Override
+    protected Class<Admin> getEntityClass() {
+        return Admin.class;
+    }
 
-    private Connection connection;
+   /* private Connection connection;
 
     public ServiceAdmin() {
         connection = DataSource.getInstance().getConnection();
@@ -95,5 +104,5 @@ public class ServiceAdmin implements IService<Admin> {
             System.err.println("Erreur lors de la récupération des admins: " + e.getMessage());
         }
         return admins;
-    }
+    }*/
 }
