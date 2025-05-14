@@ -1,0 +1,201 @@
+.event-details {
+    -fx-background-color: #f4f4f4;
+    -fx-padding: 20px;
+}
+
+.event-details .label {
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial";
+    -fx-text-fill: #333;
+}
+
+.event-details .image-view {
+    -fx-fit-width: 200px;
+    -fx-fit-height: 200px;
+    -fx-background-color: #ddd;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+}
+
+.event-details .button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 5, 0, 0, 0);
+    -fx-cursor: hand;
+}
+
+.event-details .button:hover {
+    -fx-background-color: #3e8e41;
+}
+
+.event-details .button:pressed {
+    -fx-background-color: #287436;
+}
+
+
+/* Style général */
+.root {
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+    -fx-base: #f0f0f0;
+}
+
+/* Header */
+.header {
+    -fx-background-color: #2c3e50;
+    -fx-padding: 15px;
+}
+
+.header-title {
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+/* Panneaux */
+.left-panel {
+    -fx-padding: 10px;
+    -fx-background-color: #ecf0f1;
+}
+
+.right-panel {
+    -fx-padding: 10px;
+    -fx-background-color: #ffffff;
+}
+
+/* Titres de section */
+.section-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+/* Listes */
+.sujet-list {
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.sujet-list .list-cell {
+    -fx-padding: 10px;
+    -fx-border-color: transparent transparent #bdc3c7 transparent;
+}
+
+.sujet-list .list-cell:filled:hover {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+}
+
+.sujet-list .list-cell:filled:selected {
+    -fx-background-color: #2980b9;
+    -fx-text-fill: white;
+}
+
+.message-list {
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.message-list .list-cell {
+    -fx-padding: 15px;
+    -fx-border-color: transparent transparent #bdc3c7 transparent;
+    -fx-background-color: #f9f9f9;
+}
+
+.message-list .list-cell:filled:hover {
+    -fx-background-color: #eaf2f8;
+}
+
+/* Formulaire de message */
+.message-form {
+    -fx-padding: 15px;
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 5px;
+    -fx-background-color: #ecf0f1;
+    -fx-background-radius: 5px;
+}
+
+.form-label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.message-textarea {
+    -fx-border-color: #bdc3c7;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-size: 14px;
+}
+
+/* Boutons */
+.add-button {
+    -fx-background-color: #27ae60;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 5px 10px;
+}
+
+.add-button:hover {
+    -fx-background-color: #2ecc71;
+}
+
+.send-button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 20px;
+}
+
+.send-button:hover {
+    -fx-background-color: #2980b9;
+}
+
+/* Barre de statut */
+.status-bar {
+    -fx-background-color: #2c3e50;
+    -fx-padding: 5px 10px;
+}
+
+.status-text {
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+}
+
+
+.message-cell {
+    -fx-padding: 10px;
+    -fx-background-color: #f9f9f9;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #ddd;
+    -fx-border-width: 1px;
+}
+
+.message-content {
+    -fx-font-size: 14px;
+    -fx-wrap-text: true;
+    -fx-max-width: 600px;
+}
+
+.message-date {
+    -fx-font-size: 10px;
+    -fx-text-fill: #666;
+}
+
+.edit-button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-padding: 5px 10px;
+}
+
+.delete-button {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+    -fx-padding: 5px 10px;
+}
