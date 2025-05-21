@@ -1,17 +1,47 @@
 package com.esprit.tests;
 
-import com.esprit.models.Personne;
-import com.esprit.services.ServicePersonne;
-import com.esprit.services.ServicePersonne2;
+import com.esprit.controllers.ActiviteController;
+import com.esprit.models.Activite;
 
 public class MainProg {
     public static void main(String[] args) {
-//        ServicePersonne sp = new ServicePersonne();
-//        sp.ajouter(new Personne("Ahmed", "Ghassen"));
-//        sp.modifier(new Personne(1, "Hamza", "Hosni"));
-//        sp.supprimer(new Personne(1, "", ""));
-//        System.out.println(sp.recuperer());
-        ServicePersonne2 sp2 = new ServicePersonne2();
-        sp2.ajouter(new Personne("Arbi", "Ammar"));
+        ActiviteController activiteController = new ActiviteController();
+
+        // Tester uniquement l'ajout d'une activité
+        Activite activite1 = new Activite();
+        activite1.setNom("Fitness");
+        activite1.setType("Sport");
+        activiteController.ajouterActivite(activite1);
+
+        System.out.println("Activité ajoutée avec ID: " + activite1.getId());
+
+        /*
+        // Code commenté pour les autres opérations de test
+
+        // SalleController salleController = new SalleController();
+
+        // Ajouter une salle
+        // Salle salle1 = new Salle();
+        // salle1.setNom("Salle A");
+        // salle1.setEtat(EtatSalle.DISPONIBLE);
+        // salle1.setLocalisation("Building 1");
+        // salle1.setActivites(Arrays.asList());
+
+        // salleController.ajouterSalle(salle1);
+
+        // Modifier une salle
+        // salle1.setEtat(EtatSalle.OCCUPEE);
+        // salleController.modifierSalle(salle1);
+
+        // Récupérer toutes les salles
+        // List<Salle> salles = salleController.getAllSalles();
+        // System.out.println("Liste des salles:");
+        // for (Activite a : activites) {
+        //     System.out.println("ID: " + a.getId() + ", Nom: " + a.getNom() + ", Type: " + a.getType());
+        // }
+
+        // Supprimer une activité
+        // activiteController.supprimerActivite(activite1.getId());
+        */
     }
 }
