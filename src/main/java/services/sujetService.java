@@ -17,7 +17,7 @@ public class sujetService {
 
     // Create (Ajouter un nouveau sujet)
     public void add(Sujet sujet) throws SQLException {
-        String req = "INSERT INTO sujet (titre, contenu, categorie, dateCreation) VALUES (?, ?, ?, ?)";
+            String req = "INSERT INTO sujet (titre, contenu, categorie, dateCreation) VALUES (?, ?, ?, ?)";
         PreparedStatement pst = connection.prepareStatement(req, Statement.RETURN_GENERATED_KEYS);
 
         pst.setString(1, sujet.getTitre());
@@ -127,7 +127,6 @@ public class sujetService {
         pst.executeUpdate();
     }
 
-    // Recherche par titre ou catégorie
     public List<Sujet> search(String keyword) throws SQLException {
         List<Sujet> results = new ArrayList<>();
         String req = "SELECT * FROM sujet WHERE titre LIKE ? OR categorie LIKE ?";

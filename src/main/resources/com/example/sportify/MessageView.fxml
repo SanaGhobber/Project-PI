@@ -23,6 +23,7 @@
     <children>
         <AnchorPane layoutX="94.0" layoutY="62.0" prefHeight="600.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
+                <!-- Ajout QR CODE fin -->
                 <BorderPane prefHeight="600.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <top>
                         <AnchorPane prefHeight="90.0" prefWidth="1088.0" BorderPane.alignment="CENTER">
@@ -103,7 +104,7 @@
                         <AnchorPane prefHeight="500.0" prefWidth="1378.0">
                             <children>
 
-                                <!-- Fond d'écran -->
+                                            <!-- Fond d'écran -->
                                 <ImageView blendMode="SRC_ATOP" cache="true" fitHeight="714.0" fitWidth="1378.0" nodeOrientation="INHERIT" pickOnBounds="true">
                                     <image>
                                         <Image url="https://i.ibb.co/ts00Xsh/background-sportify.png" />
@@ -129,8 +130,8 @@
                                     <VBox spacing="10" style="-fx-padding: 10; -fx-background-color: rgba(255,255,255,0.8); -fx-background-radius: 10;">
                                         <Label style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #2c3e50;" text="Messages" />
                                         <HBox spacing="10">
-                                            <Button fx:id="ascBtn" text="Trier ↑ (plus ancien)" style="-fx-background-color: #f1c40f; -fx-text-fill: #222;" />
-                                            <Button fx:id="descBtn" text="Trier ↓ (plus récent)" style="-fx-background-color: #8e44ad; -fx-text-fill: #fff;" />
+                                            <Button fx:id="ascBtn" style="-fx-background-color: #f1c40f; -fx-text-fill: #222;" text="Trier ↑ (plus ancien)" />
+                                            <Button fx:id="descBtn" style="-fx-background-color: #8e44ad; -fx-text-fill: #fff;" text="Trier ↓ (plus récent)" />
                                         </HBox>
                                         <ListView fx:id="messageListView" prefHeight="300" style="-fx-border-color: #ddd; -fx-border-radius: 5; -fx-background-radius: 5;">
                                             <placeholder>
@@ -147,6 +148,10 @@
                                         </VBox>
                                     </VBox>
                                 </SplitPane>
+                            <Button fx:id="btnScannerQR" layoutX="1165.0" layoutY="269.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="120.0" text="Scanner QR" />
+                            <!-- Ajout QR CODE début -->
+                            <Button fx:id="btnAfficherQR" layoutX="1189.0" layoutY="357.0" mnemonicParsing="false" text="Afficher QR" />
+                            <ImageView fx:id="qrImageView" fitHeight="150.0" fitWidth="174.0" layoutX="1124.0" layoutY="69.0" />
                             </children>
                         </AnchorPane>
                     </center>

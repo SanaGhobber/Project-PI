@@ -36,6 +36,21 @@
             <version>3.4.1</version>
         </dependency>
 
+        <!-- JavaFX Swing -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-swing</artifactId>
+            <version>17.0.2</version>
+        </dependency>
+
+        <dependency>
+    <groupId>org.apache.httpcomponents.client5</groupId>
+    <artifactId>httpclient5</artifactId>
+    <version>5.2.1</version>
+</dependency>
+
+
+
         <!-- JavaFX dependencies -->
         <dependency>
             <groupId>org.openjfx</groupId>

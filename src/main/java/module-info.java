@@ -7,6 +7,9 @@ module com.example.sportify {
     requires twilio;
     requires org.controlsfx.controls;
     requires org.apache.pdfbox;
+    requires java.desktop;
+    requires javafx.swing;
+    requires org.json;
 
     opens entities to javafx.base;
     opens com.example.sportify to javafx.fxml;

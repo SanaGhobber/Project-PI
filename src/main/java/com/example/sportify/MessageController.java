@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldListCell;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
@@ -18,6 +19,30 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
+// ZXing
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import com.google.zxing.Result;
+import com.google.zxing.NotFoundException;
+import com.google.zxing.LuminanceSource;
+import com.google.zxing.ReaderException;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import javafx.stage.FileChooser;
+import javafx.scene.image.Image;
+import javafx.embed.swing.SwingFXUtils;
+
+import org.json.JSONObject; // Ajout pour gestion JSON
 public class MessageController {
 
     @FXML private ListView<Sujet> sujetListView;
@@ -26,6 +51,11 @@ public class MessageController {
     @FXML private Button envoyerBtn;
     @FXML private Button ascBtn; // bouton pour trier ASC
     @FXML private Button descBtn; // bouton pour trier DESC
+
+    // QR Code
+    @FXML private Button btnAfficherQR;
+    @FXML private ImageView qrImageView;
+    @FXML private Button btnScannerQR;
 
     private sujetService sService = new sujetService();
     private messageService mService = new messageService();
@@ -43,6 +73,14 @@ public class MessageController {
             setupSortButtons();
         } catch (SQLException e) {
             showAlert("Erreur", "Erreur de chargement", e.getMessage(), Alert.AlertType.ERROR);
+        }
+
+        // QR Code handlers
+        if (btnAfficherQR != null) {
+            btnAfficherQR.setOnAction(e -> afficherQRCodeSujet());
+        }
+        if (btnScannerQR != null) {
+            btnScannerQR.setOnAction(e -> scannerQRCodeSujet());
         }
     }
 
@@ -225,5 +263,60 @@ public class MessageController {
         alert.setHeaderText(header);
         alert.setContentText(content);
         alert.showAndWait();
+    }
+
+    // Générer et afficher le QR code du sujet sélectionné
+    private void afficherQRCodeSujet() {
+        Sujet sujet = sujetListView.getSelectionModel().getSelectedItem();
+        if (sujet == null) {
+            showAlert("Avertissement", "Aucun sujet sélectionné", "Veuillez sélectionner un sujet pour générer son QR code.", Alert.AlertType.WARNING);
+            return;
+        }
+        try {
+            // Encodage JSON de toutes les infos du sujet
+            JSONObject json = new JSONObject();
+            json.put("titre", sujet.getTitre());
+            json.put("contenu", sujet.getContenu());
+            json.put("categorie", sujet.getCategorie());
+            json.put("dateCreation", sujet.getDateCreation() != null ? sujet.getDateCreation().toString() : "");
+            String qrContent = json.toString();
+            int size = 200;
+            QRCodeWriter qrCodeWriter = new QRCodeWriter();
+            BitMatrix bitMatrix = qrCodeWriter.encode(qrContent, BarcodeFormat.QR_CODE, size, size);
+            BufferedImage bufferedImage = MatrixToImageWriter.toBufferedImage(bitMatrix);
+            Image fxImage = SwingFXUtils.toFXImage(bufferedImage, null);
+            qrImageView.setImage(fxImage);
+        } catch (WriterException e) {
+            showAlert("Erreur QR", "Erreur de génération du QR code", e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+
+    // Scanner un QR code depuis une image et afficher le sujet correspondant
+    private void scannerQRCodeSujet() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Sélectionner une image QR code");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.jpeg", "*.bmp")
+        );
+        File file = fileChooser.showOpenDialog(btnScannerQR.getScene().getWindow());
+        if (file != null) {
+            try {
+                BufferedImage bufferedImage = ImageIO.read(file);
+                LuminanceSource source = new BufferedImageLuminanceSource(bufferedImage);
+                BinaryBitmap bitmap = new BinaryBitmap(new com.google.zxing.common.HybridBinarizer(source));
+                Result result = new MultiFormatReader().decode(bitmap);
+                String qrText = result.getText();
+                // On suppose que le QR code contient un JSON avec toutes les infos
+                JSONObject json = new JSONObject(qrText);
+                String titre = json.optString("titre", "");
+                String contenu = json.optString("contenu", "");
+                String categorie = json.optString("categorie", "");
+                String dateCreation = json.optString("dateCreation", "");
+                String info = "Titre : " + titre + "\nCatégorie : " + categorie + "\nDate : " + dateCreation + "\nContenu : " + contenu;
+                showAlert("Sujet scanné", "Informations du sujet", info, Alert.AlertType.INFORMATION);
+            } catch (IOException | NotFoundException | org.json.JSONException e) {
+                showAlert("Erreur QR", "Erreur lors du scan du QR code", e.getMessage(), Alert.AlertType.ERROR);
+            }
+        }
     }
 }

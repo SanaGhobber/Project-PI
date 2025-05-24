@@ -7,6 +7,8 @@ public class Sujet {
     String titre, contenu, categorie;
     LocalDateTime dateCreation;
 
+
+
     public Sujet(int id, String titre, String contenu, String categorie, LocalDateTime dateCreation) {
         this.id = id;
         this.titre = titre;
