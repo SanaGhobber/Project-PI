@@ -10,7 +10,7 @@ Double Prix;
 
     public Evenement() {
     }
-
+//evenement
     public Evenement(int id, String nomEvenement, String typeEvenement, String localisation, String image, LocalDateTime dateEvenement, Double prix) {
         this.id = id;
         this.nomEvenement = nomEvenement;
