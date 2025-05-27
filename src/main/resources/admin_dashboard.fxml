@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.controllers.AdminDashboardController">
+    <top>
+        <Label text="Dashboard Admin" style="-fx-font-size: 24px; -fx-padding: 10;"/>
+    </top>
+    <center>
+        <TabPane>
+            <tabs>
+                <Tab text="Users" closable="false">
+                    <AnchorPane>
+                        <TableView fx:id="usersTable" prefWidth="600" prefHeight="400" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+                            <columns>
+                                <TableColumn fx:id="colNom" text="Nom" prefWidth="120"/>
+                                <TableColumn fx:id="colPrenom" text="Prenom" prefWidth="120"/>
+                                <TableColumn fx:id="colEmail" text="Email" prefWidth="180"/>
+                                <TableColumn fx:id="colRole" text="Role" prefWidth="100"/>
+                                <TableColumn fx:id="colActionUser" text="Action" prefWidth="80"/>
+                            </columns>
+                        </TableView>
+                    </AnchorPane>
+                </Tab>
+                <Tab text="Products" closable="false">
+                    <AnchorPane>
+                        <TableView fx:id="productsTable" prefWidth="600" prefHeight="400" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+                            <columns>
+                                <TableColumn fx:id="colProductName" text="Nom de produit" prefWidth="180"/>
+                                <TableColumn fx:id="colProductPrice" text="Prix" prefWidth="100"/>
+                                <TableColumn fx:id="colProductCategory" text="Catégorie" prefWidth="150"/>
+                                <TableColumn fx:id="colProductStock" text="Stock" prefWidth="100"/>
+                                <TableColumn fx:id="colActionProduct" text="Action" prefWidth="80"/>
+                            </columns>
+                        </TableView>
+                    </AnchorPane>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+</BorderPane>
